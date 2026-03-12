@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Morrissey Cancellation Shrine</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --cream: #f5ede0;
+    --faded: #b8a898;
+    --red: #e05555;
+    --gold: #d4a84b;
+    --dark-gold: #8a6f38;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--black);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='4' fill='%238b1a1a'/%3E%3C/svg%3E") 10 10, auto;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+    border-bottom: 1px solid var(--dark-gold);
+  }
+
+  .roses {
+    font-size: 1.4rem;
+    letter-spacing: 20px;
+    color: var(--red);
+    margin-bottom: 20px;
+    animation: sway 4s ease-in-out infinite;
+  }
+
+  @keyframes sway {
+    0%, 100% { letter-spacing: 20px; }
+    50% { letter-spacing: 24px; }
+  }
+
+  h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    color: var(--cream);
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(168, 138, 60, 0.3);
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--faded);
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+  }
+
+  .big-number {
+    display: inline-block;
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(5rem, 20vw, 14rem);
+    color: var(--red);
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(139, 26, 26, 0.5), 4px 4px 0 var(--dark-gold);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .stat-line {
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  .epigraph {
+    max-width: 500px;
+    margin: 30px auto 0;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--faded);
+    line-height: 1.8;
+    padding: 0 20px;
+    border-left: 2px solid var(--dark-gold);
+    text-align: left;
+  }
+
+  /* Stats bar */
+  .stats-strip {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-bottom: 1px solid var(--dark-gold);
+    flex-wrap: wrap;
+  }
+
+  .stat-box {
+    padding: 24px 40px;
+    text-align: center;
+    border-right: 1px solid var(--dark-gold);
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .stat-box:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 4px;
+  }
+
+  /* Excuse legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--dark-gold);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--faded);
+    text-transform: uppercase;
+  }
+
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cat-illness { background: #e05555; }
+  .cat-exhaustion { background: #a07ad0; }
+  .cat-covid { background: #4ab89a; }
+  .cat-beef { background: #d4a84b; }
+  .cat-logistics { background: #5a9fd4; }
+  .cat-drama { background: #c870c8; }
+
+  /* Timeline */
+  .timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .year-block {
+    margin-bottom: 8px;
+    border: 1px solid #1a1a1a;
+    transition: border-color 0.3s;
+  }
+
+  .year-block:hover {
+    border-color: var(--dark-gold);
+  }
+
+  .year-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    cursor: pointer;
+    background: #0f0f0f;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .year-header:hover { background: #141414; }
+
+  .year-left {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .year-num {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+  }
+
+  .year-cancelled {
+    font-size: 0.8rem;
+    color: var(--red);
+    letter-spacing: 1px;
+  }
+
+  .year-rate {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--faded);
+  }
+
+  .rate-bar-wrap {
+    width: 120px;
+    height: 4px;
+    background: #1f1f1f;
+    position: relative;
+  }
+
+  .rate-bar {
+    height: 100%;
+    background: var(--red);
+    transition: width 0.8s ease;
+  }
+
+  .chevron {
+    color: var(--dark-gold);
+    font-size: 0.7rem;
+    transition: transform 0.3s;
+  }
+
+  .year-block.open .chevron { transform: rotate(180deg); }
+
+  .year-body {
+    display: none;
+    padding: 0 20px 16px;
+    background: #080808;
+  }
+
+  .year-block.open .year-body { display: block; }
+
+  .year-excuse {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin: 12px 0 10px;
+    padding-left: 12px;
+    border-left: 2px solid var(--dark-gold);
+  }
+
+  .show-list {
+    list-style: none;
+  }
+
+  .show-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #111;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .show-item:last-child { border-bottom: none; }
+
+  .show-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .show-date {
+    color: var(--faded);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    min-width: 100px;
+    flex-shrink: 0;
+  }
+
+  .show-venue { color: var(--cream); }
+
+  .show-reason {
+    font-style: italic;
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .show-badge {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .badge-cancelled { background: rgba(224,85,85,0.2); color: #e07070; border: 1px solid #e05555; }
+  .badge-postponed { background: rgba(160,122,208,0.2); color: #c0a0e8; border: 1px solid #a07ad0; }
+  .badge-shortened { background: rgba(212,168,75,0.2); color: #d4a84b; border: 1px solid #d4a84b; }
+
+  /* Spinning wheel of excuses */
+  .excuse-wheel {
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid var(--dark-gold);
+    border-bottom: 1px solid var(--dark-gold);
+  }
+
+  .wheel-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .wheel-subtitle {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--faded);
+    margin-bottom: 30px;
+  }
+
+  .excuse-display {
+    background: #0f0f0f;
+    border: 1px solid var(--dark-gold);
+    max-width: 500px;
+    margin: 0 auto 20px;
+    padding: 30px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .excuse-display::before, .excuse-display::after {
+    content: '❦';
+    position: absolute;
+    color: var(--dark-gold);
+    font-size: 1.2rem;
+  }
+  .excuse-display::before { top: 10px; left: 14px; }
+  .excuse-display::after { bottom: 10px; right: 14px; }
+
+  .excuse-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--cream);
+    text-align: center;
+    transition: opacity 0.3s;
+  }
+
+  .spin-btn {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.2rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 12px 36px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+  }
+
+  .spin-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.75rem;
+    color: var(--faded);
+    letter-spacing: 2px;
+    font-family: 'Courier Prime', monospace;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* Ornaments */
+  .ornament {
+    text-align: center;
+    color: var(--dark-gold);
+    font-size: 1.2rem;
+    letter-spacing: 16px;
+    padding: 20px 0;
+  }
+
+  .trophy-banner {
+    background: linear-gradient(90deg, transparent, rgba(139,26,26,0.15), transparent);
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .stat-box { min-width: 120px; padding: 16px 20px; }
+    .show-date { min-width: 80px; font-size: 0.7rem; }
+    .rate-bar-wrap { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="trophy-banner">⚰ a monument to the most reliably unreliable man in pop music ⚰</div>
+
+<header>
+  <div class="roses">🌹 🌹 🌹 🌹 🌹</div>
+  <h1>The Cancellation<br>Shrine</h1>
+  <p class="subtitle">every date morrissey has failed to appear for</p>
+  <div class="big-number" id="counter">407</div>
+  <div class="stat-line">confirmed absences &amp; departures · 1983–2026</div>
+  <blockquote class="epigraph">
+    "My apologies are now so frequent as to be somewhat ridiculous, and it is I who apologize because no one else would bother."
+    <br><br>— Morrissey, cancelling South America (again)
+  </blockquote>
+</header>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<div class="stats-strip">
+  <div class="stat-box">
+    <span class="stat-number">407</span>
+    <div class="stat-label">Shows cancelled</div>
+  </div>
+  <div class="stat-box">
+    <span class="stat-number">1,725</span>
+    <div class="stat-label">Total scheduled</div>
+  </div>
+  <div class="stat-box">
+    <span class="stat-number">24%</span>
+    <div class="stat-label">Cancellation rate</div>
+  </div>
+  <div class="stat-box">
+    <span class="stat-number">100%</span>
+    <div class="stat-label">1994 & 1996 seasons</div>
+  </div>
+  <div class="stat-box">
+    <span class="stat-number">78%</span>
+    <div class="stat-label">2013 (a vintage year)</div>
+  </div>
+</div>
+
+<div style="max-width:900px; margin:0 auto;">
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot cat-illness"></div> Illness / Body Betrayal</div>
+    <div class="legend-item"><div class="legend-dot cat-exhaustion"></div> Exhaustion / Extreme Exhaustion</div>
+    <div class="legend-item"><div class="legend-dot cat-covid"></div> COVID / Acts of God</div>
+    <div class="legend-item"><div class="legend-dot cat-beef" ></div> Artistic Differences / Beef</div>
+    <div class="legend-item"><div class="legend-dot cat-logistics"></div> Logistics / No One Helped</div>
+    <div class="legend-item"><div class="legend-dot cat-drama"></div> Pure Drama</div>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- Excuse generator -->
+<div class="excuse-wheel">
+  <div class="wheel-title">The Excuse Oracle</div>
+  <p class="wheel-subtitle">channelling the spirits of 40 years of cancellations</p>
+  <div class="excuse-display">
+    <p class="excuse-text" id="excuseText">Press the button to receive your cancellation notice.</p>
+  </div>
+  <button class="spin-btn" onclick="generateExcuse()">Consult the Oracle</button>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- Timeline -->
+<div class="timeline-container">
+  <div id="timeline"></div>
+</div>
+
+<footer>
+  <p>data via <span>wheartm.com</span> · built with equal parts love and bewilderment · <span>1983–2026</span></p>
+  <p style="margin-top:8px;">tickets might be refundable · hope is not · your evening: entirely refundable</p>
+  <p style="margin-top:8px;">fallas are murder</p>
+</footer>
+
+<script>
+const excuses = [
+  "Due to an adverse reaction to a prescription medication, tonight's performance has been cancelled. Please hold your tears.",
+  "Morrissey has contracted dengue fever. In Mexico City. Again.",
+  "The venue served meat at their restaurant. Morrissey will leave to his cannibalistic flesh-eating bloodlust.",
+  "Extreme exhaustion has rendered further exertion impossible. The band is also very tired.",
+  "It is -44 degrees outside and EVERYONE is hacking themselves to death. He is, regrettably, human.",
+  "Due to a severe sinusitis attack, the remaining 11 dates have been postponed to dates that will also be cancelled.",
+  "Morrissey collapsed after the first song and was rushed to hospital. He was discharged. He did not reschedule.",
+  "Due to lack of funding, the tour is euthanized. The future is suddenly absent.",
+  "Band illness (unspecified). The specific illness is, frankly, none of your business.",
+  "The smell of burning animals at Coachella forced an early departure. Good day.",
+  "Tonight's performance has been cancelled due to logistical circumstances beyond our control. The logistics had feelings.",
+  "Morrissey quit the David Bowie opening slot without telling the other members of The Smiths. They sat in the venue waiting.",
+  "Morrissey cancelled his Jimmy Kimmel Live appearance because Duck Dynasty was also booked. A man of principle.",
+  "Due to a threat on Morrissey's life, the show is cancelled. The Ottawa show that prompted the threat went ahead fine.",
+  "The heater was not working. The show was announced cancelled at 8:30pm. You had already driven three hours.",
+  "No label will release our music, no radio will play our music, and yet our ticket sales are sensational. Cancelled.",
+  "Due to a guitar player's arm injury, all seven European dates are cancelled. The arm has since recovered.",
+  "Morrissey was hit in the forehead with an object thrown from the crowd. Possibly a coin. Possibly a drumstick. Show over.",
+  "Technical issues and reasons beyond our control. The technical issues have declined to elaborate.",
+  "Morrissey has blown out his voice. It will return, briefly, before being blown out again in three months.",
+  "Due to exhaustion among the band and crew, tonight is cancelled. There is no financial support from imaginary record labels.",
+];
+
+function generateExcuse() {
+  const el = document.getElementById('excuseText');
+  el.style.opacity = 0;
+  setTimeout(() => {
+    el.textContent = excuses[Math.floor(Math.random() * excuses.length)];
+    el.style.opacity = 1;
+  }, 300);
+}
+
+const yearsData = [
+  {
+    year: 2026, cancelled: 6, total: 21,
+    excuse: "Prescription medication adverse reaction, then flu, then 'completely beyond our control'",
+    shows: [
+      { date: "03 Jan", venue: "Rancho Mirage, CA – Aqua Caliente Casino", status: "postponed", reason: "adverse reaction to prescription medication", cat: "illness" },
+      { date: "06 Jan", venue: "San Diego, CA – Civic Theatre", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "15 Jan", venue: "St. Louis, MO – The Factory", status: "cancelled", reason: "flu in St. Lou", cat: "illness" },
+      { date: "17 Jan", venue: "Atlanta, GA – The Fox Theatre", status: "cancelled", reason: "flu (continued)", cat: "illness" },
+      { date: "20 Jan", venue: "St. Petersburg, FL – Duke Energy Center", status: "cancelled", reason: "flu (still going)", cat: "illness" },
+      { date: "25 Jan", venue: "La Romana – Altos de Chavón", status: "cancelled", reason: "reasons completely beyond our control", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2025, cancelled: 32, total: 63,
+    excuse: "Extreme exhaustion (South America), ear infections, threats, sinusitis, financial problems, guitarist's arm",
+    shows: [
+      { date: "01 May", venue: "San Diego, CA – Civic Theatre", status: "postponed", reason: "severe sinusitis", cat: "illness" },
+      { date: "03 May", venue: "Rancho Mirage, CA", status: "postponed", reason: "severe sinusitis (continued)", cat: "illness" },
+      { date: "05 May", venue: "Tucson, AZ – Centennial Hall", status: "postponed", reason: "severe sinusitis (still going)", cat: "illness" },
+      { date: "08–16 May", venue: "San Antonio, St. Louis, Atlanta, St. Pete, Hollywood", status: "postponed", reason: "sinusitis tour sweep", cat: "illness" },
+      { date: "12 Jun", venue: "Madrid – Noches del Botánico", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "23–24 Jun", venue: "Stockholm – Hovet / Allsång på Skansen", status: "cancelled", reason: "exhaustion / no record label support", cat: "exhaustion" },
+      { date: "08–16 Jul", venue: "Belgrade, Bucharest, Istanbul, Athens, Šibenik", status: "cancelled", reason: "guitarist Carmen Vandenberg's arm injury", cat: "logistics" },
+      { date: "19–20 Sep", venue: "Mashantucket, CT / Boston, MA", status: "cancelled", reason: "death threat from Noah Castellano (Ottawa show still happened)", cat: "drama" },
+      { date: "07 Oct", venue: "Seattle, WA – Benaroya Hall", status: "cancelled", reason: "severe ear infections in both ears", cat: "illness" },
+      { date: "04 Oct", venue: "Salt Lake City, UT – The Union", status: "cancelled", reason: "ear infections (second ear)", cat: "illness" },
+      { date: "31 Oct–22 Nov", venue: "Mexico City, Guadalajara, Buenos Aires, São Paulo, Santiago, Lima, Bogota", status: "cancelled", reason: "extreme exhaustion", cat: "exhaustion" },
+      { date: "12 Dec", venue: "Athens – Faliro Sports Pavilion", status: "cancelled", reason: "extreme exhaustion (continued to Greece)", cat: "exhaustion" },
+      { date: "16–19 Dec", venue: "Istanbul & Ankara", status: "cancelled", reason: "possible boycott protests", cat: "drama" },
+    ]
+  },
+  {
+    year: 2024, cancelled: 9, total: 23,
+    excuse: "Physical exhaustion. Ordered to rest for two weeks in Zurich.",
+    shows: [
+      { date: "26–27 Jan", venue: "Anaheim & Inglewood, CA (arena shows)", status: "cancelled", reason: "physical exhaustion", cat: "exhaustion" },
+      { date: "03 Feb", venue: "Mexico City – Palacio de los Deportes", status: "cancelled", reason: "physical exhaustion", cat: "exhaustion" },
+      { date: "08–24 Feb", venue: "Lima, Bogota, Santiago, Buenos Aires, São Paulo, Brasilia", status: "cancelled", reason: "physical exhaustion, resting in Zurich", cat: "exhaustion" },
+    ]
+  },
+  {
+    year: 2023, cancelled: 14, total: 49,
+    excuse: "Dengue fever (Mexico City), 'technical issues' (entire Asian tour), various postponements",
+    shows: [
+      { date: "09 Jul", venue: "Nottingham – Royal Concert Hall", status: "postponed", reason: "dengue fever acquired in Mexico", cat: "illness" },
+      { date: "10 Sep", venue: "Mexico City – Palacio de los Deportes", status: "postponed", reason: "dengue fever (still)", cat: "illness" },
+      { date: "14–30 Sep", venue: "Lima, Bogota, Santiago, Buenos Aires, São Paulo, Brasilia", status: "postponed", reason: "dengue recovery tour", cat: "illness" },
+      { date: "09–22 Nov", venue: "Singapore, Hong Kong, Bangkok, Jakarta", status: "cancelled", reason: "technical issues and reasons beyond our control", cat: "logistics" },
+      { date: "01 Dec", venue: "Perth, Australia – Perth Concert Hall", status: "cancelled", reason: "unforeseen logistical issues", cat: "logistics" },
+      { date: "14 Dec", venue: "Auckland – The Civic", status: "cancelled", reason: "What is it? Can he just not be bothered? (actual fan quote)", cat: "drama" },
+    ]
+  },
+  {
+    year: 2022, cancelled: 6, total: 15,
+    excuse: "It was too cold outside. Band illness swept rest of tour.",
+    shows: [
+      { date: "12 Nov", venue: "Los Angeles, CA – Greek Theatre", status: "shortened", reason: "too cold outside (left after 30 minutes)", cat: "drama" },
+      { date: "22–28 Nov", venue: "Salt Lake City, Denver, Minneapolis, Milwaukee, Washington DC", status: "cancelled", reason: "band illness", cat: "illness" },
+    ]
+  },
+  {
+    year: 2021, cancelled: 3, total: 9,
+    excuse: "COVID-19 pandemic (partially excusable)",
+    shows: [
+      { date: "05 May", venue: "Tel Aviv – Zappa Club", status: "postponed", reason: "COVID-19", cat: "covid" },
+      { date: "08 May", venue: "Tel Aviv – EXPO Pavilion", status: "postponed", reason: "COVID-19", cat: "covid" },
+      { date: "14 May", venue: "Paris – Salle Pleyel", status: "cancelled", reason: "COVID-19", cat: "covid" },
+    ]
+  },
+  {
+    year: 2020, cancelled: 12, total: 14,
+    excuse: "COVID-19 pandemic (86% cancellation rate, not entirely his fault this time)",
+    shows: [
+      { date: "Mar–Sep", venue: "Paris, New York, Las Vegas (×5), Tel Aviv, Cruel World Festival", status: "cancelled", reason: "COVID-19 global pandemic", cat: "covid" },
+    ]
+  },
+  {
+    year: 2019, cancelled: 8, total: 30,
+    excuse: "Medical emergency from travel accident (Canada), flooding (Houston), 'circumstances beyond our control' (Seattle)",
+    shows: [
+      { date: "14–22 Apr", venue: "Vancouver, Calgary, Edmonton, Saskatoon, Winnipeg", status: "postponed", reason: "medical emergency from European travel accident", cat: "illness" },
+      { date: "21 Sep", venue: "Houston, TX – White Oak Music Hall", status: "postponed", reason: "flooding", cat: "logistics" },
+      { date: "01 Oct", venue: "Seattle, WA – WAMU Theater", status: "cancelled", reason: "circumstances beyond our control", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2018, cancelled: 10, total: 33,
+    excuse: "Logistical circumstances beyond our control (9 UK/EU dates), food poisoning (Paraguay)",
+    shows: [
+      { date: "04 Jul–21 Jul", venue: "Edinburgh, Manchester (×2), Portsmouth, Reading, Berlin, Copenhagen, Rattvik, Helsinki", status: "postponed", reason: "logistical circumstances beyond our control", cat: "logistics" },
+      { date: "05 Dec", venue: "Asunción, Paraguay", status: "cancelled", reason: "food poisoning", cat: "illness" },
+    ]
+  },
+  {
+    year: 2017, cancelled: 9, total: 32,
+    excuse: "Police gun incident (Italy), vocal issues (Tucson), heater not working (Paso Robles), illness",
+    shows: [
+      { date: "10 Apr", venue: "Tucson, AZ – Fox Tucson Theatre", status: "shortened", reason: "left after six songs due to vocal issues", cat: "illness" },
+      { date: "12 Apr", venue: "San Antonio, TX – Tobin Center", status: "cancelled", reason: "health concerns (third San Antonio cancellation)", cat: "illness" },
+      { date: "06 Sep", venue: "Macerata Opera Festival, Italy", status: "cancelled", reason: "police allegedly pulled a gun on him (police disagree)", cat: "drama" },
+      { date: "05 Nov", venue: "Paso Robles, CA – Vina Robles Amphitheatre", status: "cancelled", reason: "heater not working (announced at 8:30pm)", cat: "drama" },
+      { date: "04–10 Dec", venue: "Philadelphia, Late Show with Colbert, Boston", status: "cancelled", reason: "illness in the touring party", cat: "illness" },
+      { date: "10 Dec", venue: "KROQ Almost Acoustic Christmas", status: "cancelled", reason: "KROQ knew since Thursday but hoped it would improve", cat: "illness" },
+      { date: "16 Dec", venue: "CBS This Morning – Saturday Sessions", status: "cancelled", reason: "did not show up; CBS used old footage instead", cat: "drama" },
+    ]
+  },
+  {
+    year: 2016, cancelled: 17, total: 46,
+    excuse: "Keyboardist hospitalized (collapsed), followed by full tour cancellation citing 'mismanagement of tour funds'",
+    shows: [
+      { date: "19 Aug", venue: "Istanbul – KüçükÇiftlik Park", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "01 Oct", venue: "Yokohama – Bay Hall", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "18 Oct", venue: "Bangkok – Moonstar Studio", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "14 Nov", venue: "Boulder, CO", status: "cancelled", reason: "keyboardist Gustavo Manzur collapsed and was hospitalized", cat: "illness" },
+      { date: "16 Nov–17 Dec", venue: "Dallas, San Antonio, Houston, El Paso, Detroit, Cleveland, Chicago (×2 each)", status: "cancelled", reason: "mismanagement of tour funds by 360 Management", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2015, cancelled: 3, total: 76,
+    excuse: "Venue served meat (Iceland), plus two postponements and a missed TV show",
+    shows: [
+      { date: "03 Feb", venue: "Reykjavik – Harpa Concert Hall", status: "cancelled", reason: "venue served meat: 'I shall leave them to their cannibalistic flesh-eating bloodlust'", cat: "beef" },
+      { date: "10 Mar", venue: "Tilburg – 013", status: "postponed", reason: "(postponed to March 29)", cat: "logistics" },
+      { date: "27 Mar", venue: "Alan Carr: Chatty Man appearance", status: "cancelled", reason: "stuck in Belfast", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2014, cancelled: 22, total: 71,
+    excuse: "Blamed support act Kristeen Young for giving him a cold. 12 dates cancelled as a result.",
+    shows: [
+      { date: "04 Jun", venue: "Atlanta, GA – Cobb Energy Centre", status: "cancelled", reason: "blamed support act Kristeen Young for giving him a cold", cat: "beef" },
+      { date: "06 Jun–25 Jun", venue: "Atlantic City, Baltimore, DC, Chicago, Flint, Lewiston, Wilmington, Hershey, New York (Barclays!), Atlantic City again, Baltimore again, DC again", status: "cancelled", reason: "the cold from Kristeen Young (continued)", cat: "illness" },
+      { date: "31 Oct–16 Dec", venue: "Lyon, Lausanne, Basel, Warsaw (walked off after 25 mins), Athens, Istanbul, Lausanne, Groningen, Tilburg", status: "cancelled", reason: "various: missed flight, logistics, unspecified", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2013, cancelled: 62, total: 79,
+    excuse: "Bleeding ulcer, Barrett's esophagus, double pneumonia, then 'lack of funding' killed South America",
+    shows: [
+      { date: "Jan–Mar", venue: "Flint, Minneapolis, Chicago, Asheville, Nashville, Atlanta, Lawrence, Clear Lake, Lincoln, Las Vegas, Tempe, El Paso, Austin, and 8 more", status: "cancelled", reason: "bleeding ulcer, Barrett's esophagus, double pneumonia", cat: "illness" },
+      { date: "9–22 Mar", venue: "San Francisco, Mexico City (Vive Latino)", status: "cancelled", reason: "various", cat: "illness" },
+      { date: "Mar–May", venue: "Lawrence, Lincoln, Minneapolis, Chicago, Clear Lake, Nashville, Atlanta, Asheville, Richmond, DC, Philadelphia, Flint, Indianapolis, Beaumont, Pharr, Dallas, Austin, Tempe, Las Vegas, El Paso, Denver, Salt Lake City, San Francisco (×2)", status: "cancelled", reason: "rescheduled dates, also cancelled", cat: "illness" },
+      { date: "09 Jul–04 Aug", venue: "Lima (×2), Viña del Mar, Rancagua, Puerto Montt, Concepción, Santiago (×4), Buenos Aires, São Paulo, Brasilia, Rio de Janeiro", status: "cancelled", reason: "lack of funding. 'The wheels are finally off the covered wagon.'", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2012, cancelled: 27, total: 85,
+    excuse: "Mother hospitalized in July; remaining 26 dates cancelled/postponed into 2013 (which were also cancelled)",
+    shows: [
+      { date: "24 Jul", venue: "Cascais – Cascais Music Festival", status: "cancelled", reason: "mother hospitalized", cat: "logistics" },
+      { date: "23 Oct–08 Dec", venue: "Pittsburgh, Columbus, Flint, Chicago, Minneapolis, Clear Lake, Lincoln, Denver, Salt Lake City, Seattle, Bellingham, Portland, Davis, San Francisco, Reno, Tempe, Las Vegas, Los Angeles (Staples!), El Paso, Wichita Falls, Pharr, Beaumont, Atlanta, Asheville, North Bethesda, Atlantic City", status: "postponed", reason: "postponed to 2013 (which were also cancelled)", cat: "logistics" },
+    ]
+  },
+  {
+    year: 2011, cancelled: 4, total: 53,
+    excuse: "Rain (Helsingborg), visa error, two Jimmy Kimmel/Fox Theater cancellations",
+    shows: [
+      { date: "14 Jul", venue: "Helsingborg – Sundspärlan", status: "cancelled", reason: "rain (promoter wanted to continue; Morrissey disagreed)", cat: "drama" },
+      { date: "10 Nov", venue: "Chicago, IL – Congress Theater", status: "postponed", reason: "visa administration error", cat: "logistics" },
+      { date: "23 Nov", venue: "Los Angeles – Jimmy Kimmel Live!", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "01 Dec", venue: "Oakland, CA – Fox Theater", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+    ]
+  },
+  {
+    year: 2009, cancelled: 24, total: 122,
+    excuse: "Recurring influenza, collapsed in Swindon, hit by bottle in Liverpool, smell of burning animals at Coachella",
+    shows: [
+      { date: "28 Feb–09 Mar", venue: "Boca Raton, Orlando, Jacksonville, St. Petersburg, Myrtle Beach (shortened), Atlanta, Asheville", status: "cancelled", reason: "influenza", cat: "illness" },
+      { date: "17 Apr", venue: "Coachella 2009", status: "shortened", reason: "left early due to 'smell of burning animals'", cat: "beef" },
+      { date: "18 Apr", venue: "Oakland, CA – Paramount Theatre", status: "cancelled", reason: "illness", cat: "illness" },
+      { date: "11–30 May", venue: "London (Royal Albert Hall), Birmingham, Salisbury, London ×3", status: "cancelled", reason: "doctor ordered him not to sing", cat: "illness" },
+      { date: "02–03 Jun", venue: "Paris, Lille", status: "cancelled", reason: "doctor orders (continued)", cat: "illness" },
+      { date: "24 Oct", venue: "Swindon – Oasis Leisure Centre", status: "shortened", reason: "collapsed after first song, rushed to hospital", cat: "illness" },
+      { date: "26 Oct", venue: "Bournemouth – Opera House", status: "cancelled", reason: "still in hospital from Swindon", cat: "illness" },
+      { date: "07 Nov", venue: "Liverpool – Echo Arena", status: "shortened", reason: "hit with bottle, left at song two", cat: "drama" },
+      { date: "05 Dec", venue: "Indio, CA – Fantasy Springs", status: "cancelled", reason: "blown out his voice", cat: "illness" },
+    ]
+  },
+  {
+    year: 2008, cancelled: 3, total: 22,
+    excuse: "London Roundhouse: performed 4 songs, gave up. Refused to move show to the Forum (played there in 1999, had no desire to return).",
+    shows: [
+      { date: "25 Jan", venue: "London – Roundhouse", status: "shortened", reason: "left after 4 songs, throat issues. Russell Brand came out to explain.", cat: "illness" },
+      { date: "26 Jan", venue: "London – Roundhouse (rescheduled to Forum)", status: "cancelled", reason: "refused to play the Forum because he played there in 1999", cat: "drama" },
+      { date: "27 Jan", venue: "London – Roundhouse", status: "cancelled", reason: "aftermath of the above", cat: "drama" },
+    ]
+  },
+  {
+    year: 2007, cancelled: 11, total: 105,
+    excuse: "Lost his voice in Boston after 7 songs. Cancelled the next several weeks of tour.",
+    shows: [
+      { date: "03 Jun", venue: "San Diego, CA – Viejas Concerts", status: "shortened", reason: "most of set played but left during 'How Soon Is Now?'", cat: "drama" },
+      { date: "26 Jun", venue: "Boston, MA – Bank of America Pavilion", status: "shortened", reason: "7 songs only, voice cracking", cat: "illness" },
+      { date: "27 Jun–06 Jul", venue: "Northampton, Philadelphia, New York (MSG!), Baltimore, Atlantic City, Holmdel", status: "cancelled", reason: "voice lost in Boston", cat: "illness" },
+      { date: "02–04 Oct", venue: "Los Angeles – Hollywood Palladium (×2)", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "08 Nov", venue: "Miami, FL – The Fillmore", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+    ]
+  },
+  {
+    year: 2006, cancelled: 5, total: 107,
+    excuse: "Odessa TX, a Jonathan Ross appearance, and three Italian festivals",
+    shows: [
+      { date: "15 Mar", venue: "Odessa, TX – Dos Amigos", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "23 Mar", venue: "London – Friday Night with Jonathan Ross", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "12–15 Jul", venue: "Sesto Fiorentino, Napoli, Zafferana Etnea", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+    ]
+  },
+  {
+    year: 2005, cancelled: 1, total: 1,
+    excuse: "Isle of Wight Festival: only show scheduled in 2005. Cancelled. 100% cancellation rate for the year.",
+    shows: [
+      { date: "11 Jun", venue: "Nokia Isle of Wight Festival", status: "cancelled", reason: "pressure of new album + lost drummer. Cancelled the only show of the year.", cat: "drama" },
+    ]
+  },
+  {
+    year: 2004, cancelled: 29, total: 93,
+    excuse: "Strained vocal chords, Lollapalooza collapse (not his fault), illness at KROQ. Some Houston shows took 10 years to be rescheduled.",
+    shows: [
+      { date: "24–28 May", venue: "The Late Late Show with Craig Kilborn (×5 tapings)", status: "cancelled", reason: "illness", cat: "illness" },
+      { date: "14 Jul–24 Aug", venue: "Entire Lollapalooza 2004 run", status: "cancelled", reason: "Lollapalooza cancelled due to poor ticket sales (not Morrissey's fault)", cat: "logistics" },
+      { date: "01 Aug", venue: "Naeba – Fuji Rock Festival", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "07 Aug", venue: "Benicàssim Festival", status: "cancelled", reason: "plane had technical problems", cat: "logistics" },
+      { date: "18 Sep", venue: "Devore, CA – KROQ Inland Invasion 4", status: "cancelled", reason: "illness", cat: "illness" },
+      { date: "28–29 Oct", venue: "Houston, TX / Austin, TX", status: "cancelled", reason: "strained vocal chords. Houston rescheduled three times; finally performed May 2014.", cat: "illness" },
+    ]
+  },
+  {
+    year: 2002, cancelled: 5, total: 52,
+    excuse: "Five Canadian/Pacific Northwest shows cancelled",
+    shows: [
+      { date: "20 Aug–29 Aug", venue: "Anchorage, Spokane, Calgary, Edmonton, Vancouver", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+    ]
+  },
+  {
+    year: 2000, cancelled: 1, total: 30,
+    excuse: "Pittsburgh: migraine and back spasms. Postponed and never rescheduled.",
+    shows: [
+      { date: "17 Feb", venue: "Pittsburgh, PA – A.J. Palumbo Center", status: "cancelled", reason: "migraine and back spasms. Postponed and never rescheduled.", cat: "illness" },
+    ]
+  },
+  {
+    year: 1999, cancelled: 2, total: 48,
+    excuse: "Las Vegas: guitarist's back injury. Dresden: venue unsuitable for a concert.",
+    shows: [
+      { date: "07 Oct", venue: "Las Vegas – House of Blues", status: "cancelled", reason: "guitarist Alain Whyte's back injuries", cat: "illness" },
+      { date: "18 Oct", venue: "Dresden – Schlachthof", status: "cancelled", reason: "venue was unsuitable for a concert", cat: "drama" },
+    ]
+  },
+  {
+    year: 1997, cancelled: 1, total: 55,
+    excuse: "Minneapolis. No reason recorded. A lone, mysterious absence.",
+    shows: [
+      { date: "29 Sep", venue: "Minneapolis – Guthrie Theater", status: "cancelled", reason: "(no reason recorded for posterity)", cat: "drama" },
+    ]
+  },
+  {
+    year: 1996, cancelled: 23, total: 23,
+    excuse: "Quit as David Bowie's opening act. 100% cancellation rate. Bowie subsequently blocked Morrissey's use of his image for 17 years.",
+    shows: [
+      { date: "17 Jan–20 Feb", venue: "Helsinki, Stockholm, Gothenburg, Oslo, Copenhagen, Hamburg, Brussels, Utrecht, Dortmund, Frankfurt, Berlin, Prague, Vienna, Ljubljana, Milan, Bologna, Lyon, Geneva, Zurich, Amnéville, Lille, Rennes, Paris", status: "cancelled", reason: "quit the David Bowie 1996 European tour entirely (all 23 dates)", cat: "drama" },
+    ]
+  },
+  {
+    year: 1995, cancelled: 10, total: 28,
+    excuse: "Quit as Bowie opening act suddenly before Aberdeen, without telling the rest of the band",
+    shows: [
+      { date: "23 Nov–13 Dec", venue: "Belfast, Aberdeen, Glasgow, Sheffield (×2), Belfast, Manchester (×2), Newcastle, Birmingham", status: "cancelled", reason: "suddenly quit the David Bowie Outside tour without telling anyone", cat: "drama" },
+    ]
+  },
+  {
+    year: 1994, cancelled: 6, total: 6,
+    excuse: "All six scheduled shows in 1994 were cancelled. Carnegie Hall twice. 100% cancellation rate.",
+    shows: [
+      { date: "08 Apr", venue: "Los Angeles – Olympic Auditorium", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "11–12 Apr", venue: "New York – Carnegie Hall (×2)", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "19–20 Sep", venue: "New York – Carnegie Hall (×2, rescheduled)", status: "cancelled", reason: "(rescheduled dates, also cancelled)", cat: "drama" },
+      { date: "29 Sep", venue: "Los Angeles – Olympic Auditorium (rescheduled)", status: "cancelled", reason: "(rescheduled date, also cancelled)", cat: "drama" },
+    ]
+  },
+  {
+    year: 1992, cancelled: 3, total: 53,
+    excuse: "Glastonbury (no reason), Madstock: wrapped Union Jack around body prompting crowd trouble; second Madstock also cancelled",
+    shows: [
+      { date: "27 Jun", venue: "Glastonbury Festival", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "08 Aug", venue: "Madstock, Finsbury Park (show 1)", status: "shortened", reason: "crowd got rowdy after he wrapped the Union Jack around himself", cat: "drama" },
+      { date: "09 Aug", venue: "Madstock, Finsbury Park (show 2)", status: "cancelled", reason: "aftermath of yesterday's Union Jack incident", cat: "drama" },
+    ]
+  },
+  {
+    year: 1991, cancelled: 20, total: 70,
+    excuse: "Sore throat, and 11 final Kill Uncle dates cancelled due to 'exhaustion after 6 months of touring'",
+    shows: [
+      { date: "16 May", venue: "Glasgow – Royal Concert Hall", status: "cancelled", reason: "sore throat", cat: "illness" },
+      { date: "18–30 Jun", venue: "Austin, Nashville, Pittsburgh", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "13–19 Sep", venue: "Sydney, Melbourne, Perth, Adelaide", status: "cancelled", reason: "(Australia leg cancelled)", cat: "drama" },
+      { date: "01 Nov", venue: "UCLA – Pauley Pavilion", status: "shortened", reason: "left after 9 songs due to injured fans", cat: "drama" },
+      { date: "12–26 Nov", venue: "Worcester, Albany, New York, Philadelphia, DC, Williamsburg, Chapel Hill, Birmingham AL, New Orleans, Lakeland, Miami", status: "cancelled", reason: "exhaustion after 6+ months of touring (Kill Uncle finale)", cat: "exhaustion" },
+    ]
+  },
+  {
+    year: 1986, cancelled: 3, total: 48,
+    excuse: "Hit in the head by a coin/drumstick at Preston Guildhall. Cancelled next show, fled to Manchester.",
+    shows: [
+      { date: "27 Oct", venue: "Preston – Guildhall", status: "shortened", reason: "hit in forehead by object from crowd (coin? drumstick?), head bleeding", cat: "drama" },
+      { date: "28 Oct", venue: "Llandudno – Astra Theatre", status: "cancelled", reason: "returned to Manchester to recover from head injury", cat: "illness" },
+      { date: "14 Nov", venue: "London – Royal Albert Hall (Anti-Apartheid)", status: "cancelled", reason: "Johnny Marr's car crash earlier that week", cat: "logistics" },
+    ]
+  },
+  {
+    year: 1985, cancelled: 3, total: 48,
+    excuse: "Stage lighting failure (Southend), postponement (San Sebastian), and Morrissey silently left Wogan without telling anyone",
+    shows: [
+      { date: "10 Mar", venue: "Southend – Cliffs Pavilion", status: "cancelled", reason: "stage lighting blown out for technical reasons", cat: "logistics" },
+      { date: "19 May", venue: "San Sebastian – Polideportivo Anoeta", status: "postponed", reason: "(postponed)", cat: "logistics" },
+      { date: "19 Jul", venue: "BBC Wogan TV appearance", status: "cancelled", reason: "went back to Manchester without telling the band, manager, or TV crew. They waited.", cat: "drama" },
+    ]
+  },
+  {
+    year: 1984, cancelled: 7, total: 65,
+    excuse: "Mike Joyce got chicken pox (Boston & NJ), five European dates cancelled for a Top of the Pops taping",
+    shows: [
+      { date: "02 Jan", venue: "Boston – Unknown venue", status: "cancelled", reason: "Mike Joyce had chicken pox", cat: "illness" },
+      { date: "06 Jan", venue: "Trenton, NJ – City Gardens", status: "cancelled", reason: "Mike Joyce still had chicken pox", cat: "illness" },
+      { date: "26 Apr–03 May", venue: "Vienna, Munich, Frankfurt, Cologne, Bremen", status: "cancelled", reason: "had to return to UK for Top of the Pops taping with Sandie Shaw", cat: "logistics" },
+    ]
+  },
+  {
+    year: 1983, cancelled: 7, total: 47,
+    excuse: "Dropped from bill by Altered Images, two Hull/Newcastle cancellations due to venue receivership, and multiple others",
+    shows: [
+      { date: "24 Jul", venue: "London – Hammersmith Palais", status: "cancelled", reason: "dropped from bill at request of Altered Images", cat: "drama" },
+      { date: "12–13 Aug", venue: "Hull & Newcastle – Dingwalls (×2)", status: "cancelled", reason: "venue receivership", cat: "logistics" },
+      { date: "16 Sep", venue: "Manchester – In the Pink Festival", status: "cancelled", reason: "Morrissey was distancing himself from the gay movement at the time", cat: "drama" },
+      { date: "17 Sep", venue: "Leeds – Queen's Hall (Futurama Festival)", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+      { date: "24 Sep", venue: "Brighton – Escape Club", status: "cancelled", reason: "Morrissey was ill", cat: "illness" },
+      { date: "23 Nov", venue: "Huddersfield – Polytechnic", status: "cancelled", reason: "(no reason given)", cat: "drama" },
+    ]
+  },
+];
+
+function getCatClass(cat) {
+  const map = {
+    illness: 'cat-illness',
+    exhaustion: 'cat-exhaustion',
+    covid: 'cat-covid',
+    beef: 'cat-beef',
+    logistics: 'cat-logistics',
+    drama: 'cat-drama',
+  };
+  return map[cat] || 'cat-drama';
+}
+
+function buildTimeline() {
+  const container = document.getElementById('timeline');
+  yearsData.forEach(y => {
+    const rate = Math.round((y.cancelled / y.total) * 100);
+    const block = document.createElement('div');
+    block.className = 'year-block';
+
+    let showsHtml = y.shows.map(s => {
+      const badgeClass = s.status === 'cancelled' ? 'badge-cancelled' : s.status === 'postponed' ? 'badge-postponed' : 'badge-shortened';
+      const badgeText = s.status === 'shortened' ? 'cut short' : s.status;
+      return `<li class="show-item">
+        <div class="show-dot legend-dot ${getCatClass(s.cat)}"></div>
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <span class="show-date">${s.date}</span>
+            <span class="show-badge ${badgeClass}">${badgeText}</span>
+          </div>
+          <div class="show-venue">${s.venue}</div>
+          <div class="show-reason">${s.reason}</div>
+        </div>
+      </li>`;
+    }).join('');
+
+    // Rate bar color
+    const rateColor = rate >= 70 ? '#c04040' : rate >= 40 ? '#a88a3c' : '#5a8a5a';
+
+    block.innerHTML = `
+      <div class="year-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="year-left">
+          <span class="year-num">${y.year}</span>
+          <span class="year-cancelled">${y.cancelled} cancelled</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div>
+            <div class="year-rate">${rate}% cancellation rate</div>
+            <div class="rate-bar-wrap" style="margin-top:4px;">
+              <div class="rate-bar" style="width:${rate}%; background:${rateColor};"></div>
+            </div>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="year-body">
+        <div class="year-excuse">${y.excuse}</div>
+        <ul class="show-list">${showsHtml}</ul>
+      </div>`;
+
+    container.appendChild(block);
+  });
+}
+
+buildTimeline();
+
+// Animate counter on load
+window.addEventListener('load', () => {
+  const el = document.getElementById('counter');
+  let count = 0;
+  const target = 407;
+  const duration = 1800;
+  const step = target / (duration / 16);
+  const interval = setInterval(() => {
+    count = Math.min(count + step, target);
+    el.textContent = Math.floor(count);
+    if (count >= target) {
+      el.textContent = target;
+      clearInterval(interval);
+    }
+  }, 16);
+});
+</script>
+</body>
+</html>
