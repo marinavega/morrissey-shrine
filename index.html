@@ -443,7 +443,7 @@
   <div class="roses">🌹 🌹 🌹 🌹 🌹</div>
   <h1>The Cancellation<br>Shrine</h1>
   <p class="subtitle">every date morrissey has failed to appear for</p>
-  <div class="big-number" id="counter">407</div>
+  <div class="big-number" id="counter">408</div>
   <div class="stat-line">confirmed absences &amp; departures · 1983–2026</div>
   <blockquote class="epigraph">
     "My apologies are now so frequent as to be somewhat ridiculous, and it is I who apologize because no one else would bother."
@@ -455,7 +455,7 @@
 
 <div class="stats-strip">
   <div class="stat-box">
-    <span class="stat-number">407</span>
+    <span class="stat-number">408</span>
     <div class="stat-label">Shows cancelled</div>
   </div>
   <div class="stat-box">
@@ -535,6 +535,7 @@ const excuses = [
   "Technical issues and reasons beyond our control. The technical issues have declined to elaborate.",
   "Morrissey has blown out his voice. It will return, briefly, before being blown out again in three months.",
   "Due to exhaustion among the band and crew, tonight is cancelled. There is no financial support from imaginary record labels.",
+  "After two days driving from Milan, Morrissey arrived in València and could not sleep due to Las Fallas fireworks, techno music, and megaphone announcements. He is catatonic. The show is not cancelled. The circumstances make it impossible.",
 ];
 
 function generateExcuse() {
@@ -548,8 +549,8 @@ function generateExcuse() {
 
 const yearsData = [
   {
-    year: 2026, cancelled: 6, total: 21,
-    excuse: "Prescription medication adverse reaction, then flu, then 'completely beyond our control'",
+    year: 2026, cancelled: 7, total: 22,
+    excuse: "Prescription medication, flu, 'beyond our control', and — the crown jewel — Las Fallas kept him awake and left him catatonic",
     shows: [
       { date: "03 Jan", venue: "Rancho Mirage, CA – Aqua Caliente Casino", status: "postponed", reason: "adverse reaction to prescription medication", cat: "illness" },
       { date: "06 Jan", venue: "San Diego, CA – Civic Theatre", status: "cancelled", reason: "(no reason given)", cat: "drama" },
@@ -557,6 +558,7 @@ const yearsData = [
       { date: "17 Jan", venue: "Atlanta, GA – The Fox Theatre", status: "cancelled", reason: "flu (continued)", cat: "illness" },
       { date: "20 Jan", venue: "St. Petersburg, FL – Duke Energy Center", status: "cancelled", reason: "flu (still going)", cat: "illness" },
       { date: "25 Jan", venue: "La Romana – Altos de Chavón", status: "cancelled", reason: "reasons completely beyond our control", cat: "logistics" },
+      { date: "12 Mar", venue: "València – Palau de les Arts", status: "cancelled", reason: "drove from Milan, couldn't sleep due to Las Fallas fireworks, techno music and megaphones. Left in a 'catatonic state'. Official statement: 'The show is not cancelled. The circumstances make it impossible.'", cat: "drama" },
     ]
   },
   {
